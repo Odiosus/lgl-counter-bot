@@ -11,16 +11,16 @@ async def start_cmd(message: types.Message):
     await message.answer("hi, I'm a virtual assistant")
 
 
-@user_private_router.message(F.text.lower().contains("меню"))
-@user_private_router.message(or_f(Command('menu')), (F.text.lower() == "меню"))
+@user_private_router.message(F.text.lower().contains("услуги"))
+@user_private_router.message(or_f(Command('services')), (F.text.lower() == "услуги"))
 async def menu_cmd(message: types.Message):
-    await message.answer("Это меню:")
+    await message.answer("Список услуг:")
 
 
-@user_private_router.message((F.text.lower().contains("о нас")) | (F.text.lower() == "о нас"))
+@user_private_router.message((F.text.lower().contains("о боте")) | (F.text.lower() == "о боте"))
 @user_private_router.message(Command('about'))
 async def about_cmd(message: types.Message):
-    await message.answer("о нас")
+    await message.answer("О боте")
 
 
 @user_private_router.message((F.text.lower().contains("оплата")) | (F.text.lower() == "варианты оплаты"))
@@ -29,10 +29,10 @@ async def payment_cmd(message: types.Message):
     await message.answer("Оплата")
 
 
-@user_private_router.message((F.text.lower().contains("доставк")) | (F.text.lower() == "варианты доставки"))
-@user_private_router.message(Command('shipping'))
+@user_private_router.message((F.text.lower().contains("выгруз")) | (F.text.lower() == "варианты выгрузки"))
+@user_private_router.message(Command('extract'))
 async def shipping_cmd(message: types.Message):
-    await message.answer("Доставка")
+    await message.answer("Выгрузить")
 
 
 @user_private_router.message(F.text.lower().contains("помощь"))
